@@ -14,5 +14,8 @@ qemu: config
 purge:
 	cd buildroot && make clean distclean
 
-.PHONY: all update qemu config purge
+rootfs:
+	cd buildroot && make rootfs-ext2
+
+.PHONY: all update qemu config purge rootfs
 .DEFAULT_GOAL=all
