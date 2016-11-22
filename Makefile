@@ -11,11 +11,15 @@ update:
 qemu: config
 	cd buildroot && make -j$(horses)
 
-purge:
-	cd buildroot && make clean distclean
+purge: clean
+	cd buildroot && make distclean
+
+clean:
+	cd buildroot && make clean
 
 rootfs:
+	#- rm -rvf buildroot/output/target/*
 	cd buildroot && make rootfs-ext2
 
-.PHONY: all update qemu config purge rootfs
+.PHONY: all update qemu config purge rootfs clean
 .DEFAULT_GOAL=all
