@@ -1,12 +1,14 @@
 horses=$(shell nproc)
 
+SUBMODULE	?= buildroot
+
 all: update qemu
 
 config:
 	cp -v qemux86-config buildroot/.config
 
-update:
-	git submodule update --init --recursive .
+update: $(SUBMODULE)
+	git submodule update --init --recursive $<
 
 qemu: config
 	cd buildroot && make -j$(horses)
