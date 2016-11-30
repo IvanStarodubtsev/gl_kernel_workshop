@@ -1,2 +1,11 @@
+!cache/README.md
+!cache/buildroot/root
+!cache/buildroot/users
+
+cache/buildroot/*
+cache/kernel/*
+
+stamp-*
+
 .*.swp
 build.log

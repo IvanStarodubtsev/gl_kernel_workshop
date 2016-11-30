@@ -1,27 +1,40 @@
 horses=$(shell nproc)
 
-SUBMODULE	?= buildroot
+PWD		= $(realpath .)
 
-all: update qemu
+SUBMODULE	?= .
 
-config:
-	cp -v qemux86-config buildroot/.config
+export BUILD_KERNEL	= $(PWD)/cache/kernel
+export BUILD_ROOTFS	= $(PWD)/cache/buildroot
+
+all: update config rootfs kernel
 
 update: $(SUBMODULE)
 	git submodule update --init --recursive $<
 
-qemu: config
-	cd buildroot && make -j$(horses)
-
-purge: clean
-	cd buildroot && make distclean
-
-clean:
-	cd buildroot && make clean
+config:
+	cd buildroot && make O=$(BUILD_ROOTFS) qemu_x86_defconfig
+	cp -rvf buildroot-qemu-x86-config $(BUILD_ROOTFS)/.config
 
 rootfs:
-	#- rm -rvf buildroot/output/target/*
-	cd buildroot && make rootfs-ext2
+	cd $(BUILD_ROOTFS) && make -j$(horses)
 
-.PHONY: all update qemu config purge rootfs clean
+rootfs-update:
+	cd $(BUILD_ROOTFS) && make rootfs-ext2
+
+kernel:
+	cd linux-stable && make ARCH=i386 O=$(BUILD_KERNEL) defconfig
+	cd $(BUILD_KERNEL) && make -j$(horses)
+
+
+
+
+
+purge: clean
+	cd $(BUILD_ROOTFS) && make distclean
+
+clean:
+	cd $(BUILD_ROOTFS) && make clean
+
+.PHONY: all update config purge rootfs rootfs-update clean kernel
 .DEFAULT_GOAL=all
