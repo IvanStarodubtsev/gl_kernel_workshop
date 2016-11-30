@@ -2,3 +2,6 @@
 	path = buildroot
 	url = git://git.buildroot.net/buildroot
 
+[submodule "linux-stable"]
+	path = linux-stable
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable
