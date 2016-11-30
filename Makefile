@@ -26,15 +26,13 @@ kernel:
 	cd linux-stable && make ARCH=i386 O=$(BUILD_KERNEL) defconfig
 	cd $(BUILD_KERNEL) && make -j$(horses)
 
-
-
-
-
 purge: clean
 	cd $(BUILD_ROOTFS) && make distclean
+	cd $(BUILD_KERNEL) && make distclean
 
 clean:
 	cd $(BUILD_ROOTFS) && make clean
+	cd $(BUILD_KERNEL) && make distclean
 
 .PHONY: all update config purge rootfs rootfs-update clean kernel
 .DEFAULT_GOAL=all
