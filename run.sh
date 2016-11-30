@@ -13,9 +13,10 @@ BR_ROOTFS=cache/buildroot/images/rootfs.ext3
 #		 	-append "root=/dev/vda rw console=ttyS0,115200"		\
 #		 	-net nic,model=virtio -net user
 
-qemu-system-i386	-nographic			\
-			-kernel $BR_KERNEL		\
+
+qemu-system-i386	-nographic						\
+			-kernel $BR_KERNEL					\
 			-append "root=/dev/sda rw console=ttyS0,115200"		\
-			-hda $BR_ROOTFS			\
+			-hda $BR_ROOTFS						\
 			-redir tcp:8022::22
 
