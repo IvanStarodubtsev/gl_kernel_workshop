@@ -32,7 +32,7 @@ purge: clean
 
 clean:
 	cd $(BUILD_ROOTFS) && make clean
-	cd $(BUILD_KERNEL) && make distclean
+	cd $(BUILD_KERNEL) && make clean
 
 .PHONY: all update config purge rootfs rootfs-update clean kernel
 .DEFAULT_GOAL=all
