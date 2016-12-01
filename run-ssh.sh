@@ -1,4 +1,4 @@
-#!/bin/bash -evx
+#!/bin/bash -ex
 
 [ -z $1 ] && exit
 
