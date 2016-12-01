@@ -7,5 +7,5 @@ cache/kernel/*
 
 stamp-*
 
-.*.swp
+*/.*.swp
 build.log
