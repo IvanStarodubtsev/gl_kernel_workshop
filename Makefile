@@ -46,6 +46,7 @@ hello_printk_all:
 	cd lesson2 && make all
 
 hello_printk_clean:
+	cd lesson2 && make clean
 	cd lesson2/hello_printk && make clean
 	cd lesson2/hello_printk_dep && make clean
 
