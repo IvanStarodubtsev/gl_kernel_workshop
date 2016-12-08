@@ -7,6 +7,7 @@ SUBMODULE	?= .
 export BUILD_KERNEL	= $(PWD)/cache/kernel
 export BUILD_ROOTFS	= $(PWD)/cache/buildroot
 
+# lesson1 part
 all: update config rootfs kernel
 
 update: $(SUBMODULE)
@@ -34,11 +35,15 @@ clean:
 	cd $(BUILD_ROOTFS) && make clean
 	cd $(BUILD_KERNEL) && make clean
 
+# lesson2 part
 hello_printk:
 	cd lesson2/hello_printk && make all
 
 hello_printk_dep:
 	cd lesson2/hello_printk_dep && make all
+
+hello_printk_all:
+	cd lesson2 && make all
 
 hello_printk_clean:
 	cd lesson2/hello_printk && make clean
