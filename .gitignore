@@ -11,3 +11,13 @@ stamp-*
 .*.swp
 
 build.log
+
+*.ko
+*.o
+.tmp_versions
+.*.ko.cmd
+.*.mod.o.cmd
+.*.o.cmd
+Module.symvers
+*.mod.c
+modules.order

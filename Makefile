@@ -34,5 +34,15 @@ clean:
 	cd $(BUILD_ROOTFS) && make clean
 	cd $(BUILD_KERNEL) && make clean
 
+hello_printk:
+	cd lesson2/hello_printk && make all
+
+hello_printk_dep:
+	cd lesson2/hello_printk_dep && make all
+
+hello_printk_clean:
+	cd lesson2/hello_printk && make clean
+	cd lesson2/hello_printk_dep && make clean
+
 .PHONY: all update config purge rootfs rootfs-update clean kernel
 .DEFAULT_GOAL=all
